@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Seerror</title>
+    <title>Contact - PulseAI</title>
     <style>
         /* Global Styles */
         body {
@@ -45,9 +45,8 @@
         nav a {
             margin: 0 11px;
             color: #555;
-            font-weight: 500;
-            transition: color 0.3s ease;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
@@ -71,13 +70,13 @@
         main h1 {
             font-size: 36px;
             font-weight: bold;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 8px;
         }
 
         main h2 {
             font-size: 20px;
-            color: #333;
+            color: #ffffff;
         }
 
         main h2 span {
@@ -101,6 +100,7 @@
             outline: none;
             transition: border-color 0.3s ease;
             background-color: #000000;
+            color: #ffffff;
         }
 
         input:focus, textarea:focus {
@@ -108,22 +108,22 @@
         }
 
         button {
-            padding: 16px 24px; /* Added horizontal padding for a more balanced button */
+            padding: 16px 24px;
             font-size: 18px;
             font-weight: 600;
-            color: #4f46e5; /* Changed text color to the button background color for better contrast */
-            background: rgba(79, 70, 229, 0.1); /* Transparent background with subtle color */
-            border: 2px solid #4f46e5; /* Added a border to define the button */
+            color: #4f46e5;
+            background: rgba(79, 70, 229, 0.1);
+            border: 2px solid #4f46e5;
             border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Added smooth transition for color and border */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow for a more elevated look */
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         button:hover {
-            background: rgba(79, 70, 229, 0.2); /* Slightly darker on hover */
-            color: #ffffff; /* Change text color to white on hover */
-            border-color: #4f46e5; /* Keep the border color consistent */
+            background: rgba(79, 70, 229, 0.2);
+            color: #ffffff;
+            border-color: #4f46e5;
         }
 
         /* Footer */
@@ -151,9 +151,9 @@
     <!-- Navbar -->
     <header>
         <div class="container">
-            <a href="/images/pluseAI.jpg">
-                <img src="/images/pluseAI.jpg" alt="PluseAI" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 0;">
-                luseAI
+            <a href="/">
+                <img src="/images/pluseAI.jpg" alt="PulseAI Logo" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 0;">
+                PulseAI
             </a>
             <nav>
                 <a href="index.html">Home</a>
@@ -170,19 +170,52 @@
         <h2>We would love to hear from you! Please reach out to us with any questions or feedback.</h2>
 
         <form id="contactForm">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+            <input type="text" id="name" placeholder="Your Name" required aria-label="Your Name">
+            <input type="email" id="email" placeholder="Your Email" required aria-label="Your Email">
+            <textarea id="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
             <button type="submit">Send Message</button>
         </form>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Seerror. All rights reserved.</p>
-        <p>Made with ❤️ by the Seerror Member.</p>
+        <p>&copy; 2025 PulseAI. All rights reserved.</p>
+        <p>Made with ❤️ by the PulseAI Team.</p>
     </footer>
 
-    <script src="app.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        emailjs.init("vn949KF0GSfpd706y");
+
+        // Handle form submission
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                message: document.getElementById("message").value.trim()
+            };
+
+            // Validate form data
+            if (!formData.name || !formData.email || !formData.message) {
+                alert("Please fill out all fields before submitting.");
+                return;
+            }
+
+            // Send email using EmailJS
+            emailjs.send("service_w7q5mhp", "template_rhx1y2u", formData)
+                .then(function(response) {
+                    alert("Your message has been sent successfully!");
+                    document.getElementById("contactForm").reset();
+                })
+                .catch(function(error) {
+                    console.error("EmailJS Error:", error);
+                    alert("There was an error sending your message. Please try again later.");
+                });
+        });
+    </script>
 </body>
 </html>

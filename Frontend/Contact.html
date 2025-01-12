@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Seerror</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'sans-serif', sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #ff0000 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4f46e5;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: 'Canela', Canela;
+        }
+
+        /* Navbar */
+        header {
+            background-color: rgb(0, 0, 0);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 11px;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #4f46e5;
+        }
+
+        /* Main Content */
+        main {
+            flex-grow: 1;
+            width: 90%;
+            max-width: 1100px;
+            margin: 32px auto;
+            padding: 40px;
+            background: rgb(0, 0, 0);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        main h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        main h2 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        main h2 span {
+            color: #3cb381;
+        }
+
+        /* Form */
+        form {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 24px;
+        }
+
+        input, textarea {
+            padding: 16px;
+            font-size: 18px;
+            border: 2px solid #ffffff;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease;
+            background-color: #000000;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #4f46e5;
+        }
+
+        button {
+            padding: 16px 24px; /* Added horizontal padding for a more balanced button */
+            font-size: 18px;
+            font-weight: 600;
+            color: #4f46e5; /* Changed text color to the button background color for better contrast */
+            background: rgba(79, 70, 229, 0.1); /* Transparent background with subtle color */
+            border: 2px solid #4f46e5; /* Added a border to define the button */
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Added smooth transition for color and border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow for a more elevated look */
+        }
+
+        button:hover {
+            background: rgba(79, 70, 229, 0.2); /* Slightly darker on hover */
+            color: #ffffff; /* Change text color to white on hover */
+            border-color: #4f46e5; /* Keep the border color consistent */
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            color: rgb(111, 99, 99);
+            padding: 16px 0;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'sans-serif', sans-serif;
+        }
+
+        footer p {
+            margin: 8px 0;
+        }
+
+        footer p a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="container">
+            <a href="/images/pluseAI.jpg">
+                <img src="/images/pluseAI.jpg" alt="PluseAI" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 0;">
+                luseAI
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="Feature.html">Features</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="Contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Contact Us</h1>
+        <h2>We would love to hear from you! Please reach out to us with any questions or feedback.</h2>
+
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Seerror. All rights reserved.</p>
+        <p>Made with ❤️ by the Seerror Member.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

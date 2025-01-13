@@ -20,7 +20,7 @@ form.addEventListener("submit", async (e) => {
     outputContainer.style.display = 'none'; // Hide output container until data is ready
 
     try {
-        const response = await fetch("http://65.1.185.198:8000", {
+        const response = await fetch("http://65.1.185.198:8000/inspect", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -20,7 +20,7 @@ form.addEventListener("submit", async (e) => {
     outputContainer.style.display = 'none'; // Hide output container until data is ready
 
     try {
-        const response = await fetch("https://ybbmqmjwfg.execute-api.ap-south-1.amazonaws.com", {
+        const response = await fetch("https://ybbmqmjwfg.execute-api.ap-south-1.amazonaws.com/inspect", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -5,3 +5,4 @@ beautifulsoup4==4.12.3
 pydantic==1.10.7
 torch==2.5.1
 transformers==4.48.0
+httpx==0.28.1

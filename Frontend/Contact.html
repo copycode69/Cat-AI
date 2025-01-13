@@ -76,11 +76,7 @@
 
         main h2 {
             font-size: 20px;
-            color: #ffffff;
-        }
-
-        main h2 span {
-            color: #3cb381;
+            color: #ffffff79;
         }
 
         /* Form */
@@ -177,43 +173,7 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 PulseAI. All rights reserved.</p>
-        <p>Made with ❤️ by the PulseAI Team.</p>
+        <p>Made with ❤️ by the seerror Team.</p>
     </footer>
-
-    <!-- EmailJS Script -->
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script
-    <script>
-        // Initialize EmailJS
-        emailjs.init("vn949KF0GSfpd706y");
-
-        // Handle form submission
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            // Collect form data
-            const formData = {
-                name: document.getElementById("name").value.trim(),
-                email: document.getElementById("email").value.trim(),
-                message: document.getElementById("message").value.trim()
-            };
-
-            // Validate form data
-            if (!formData.name || !formData.email || !formData.message) {
-                alert("Please fill out all fields before submitting.");
-                return;
-            }
-
-            // Send email using EmailJS
-            emailjs.send("service_dq3xyor", "template_qv62eeo", formData)
-                .then(function(response) {
-                    alert("Your message has been sent successfully!");
-                    document.getElementById("contactForm").reset();
-                })
-                .catch(function(error) {
-                    console.error("EmailJS Error:", error);
-                    alert("There was an error sending your message. Please try again later.");
-                });
-        });
-    </script>
 </body>
 </html>

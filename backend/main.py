@@ -49,16 +49,16 @@ async def inspect_url(data: URLRequest):
         meta_desc = soup.find("meta", attrs={"name": "description"})
         meta_desc = meta_desc["content"].strip() if meta_desc and meta_desc.get("content") else "No meta description found"
 
-        # Headings Extraction
+        # Headings Extraction (Limit to the first 5 headings of each type)
         headings = {}
         for i in range(1, 7):
             heading_tags = soup.find_all(f"h{i}")
-            headings[f"h{i}"] = [tag.text.strip() for tag in heading_tags] if heading_tags else []
+            headings[f"h{i}"] = [tag.text.strip() for tag in heading_tags[:5]] if heading_tags else []
 
-        # Links Extraction
-        links = [tag.get('href') for tag in soup.find_all('a') if tag.get('href')]
+        # Links Extraction (Limit to the first 20 links for performance)
+        links = [tag.get('href') for tag in soup.find_all('a') if tag.get('href')][:20]
         broken_links = []
-        for link in links[:50]:  # Limit to 50 links for performance
+        for link in links:
             try:
                 full_link = urljoin(data.url, link)
                 link_response = requests.head(full_link, headers=headers, timeout=5)
@@ -67,17 +67,17 @@ async def inspect_url(data: URLRequest):
             except requests.exceptions.RequestException:
                 broken_links.append(full_link)
 
-        # Images and Alt-Text Issues
-        images = [urljoin(data.url, img.get('src')) for img in soup.find_all('img') if img.get('src')]
+        # Images and Alt-Text Issues (Limit to the first 20 images)
+        images = [urljoin(data.url, img.get('src')) for img in soup.find_all('img') if img.get('src')][:20]
         image_issues = []
-        for img_url in images[:50]:  # Limit to 50 images for performance
+        for img_url in images:
             img_tag = soup.find("img", {"src": img_url})
             alt_text = img_tag.get("alt", "") if img_tag else ""
             if not alt_text:
                 image_issues.append(f"Image at {img_url} is missing alt text.")
 
-        # Summarize Content
-        content = soup.get_text().strip()[:10000]  # Limit content to 10,000 characters
+        # Summarize Content (Limit content to 2,000 characters)
+        content = soup.get_text().strip()[:2000]  # Limit content to 2,000 characters
         summary = "Content too short to summarize"
         if len(content.split()) > 50:  # Ensure content has enough words
             summary = summarizer(content, max_length=200, min_length=50, do_sample=False)[0]['summary_text']

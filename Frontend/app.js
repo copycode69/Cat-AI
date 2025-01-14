@@ -12,23 +12,10 @@ const imageIssuesDiv = document.getElementById("imageIssues");
 const outputContainer = document.getElementById("outputContainer");
 const loadingAudio = document.getElementById("loading-audio");  // The audio element
 
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("urlForm");
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const url = document.getElementById("urlInput").value;
 
-    form.addEventListener("submit", (e) => {
-        console.log("Form submission detected!");
-        e.preventDefault(); // Prevent default page refresh behavior
-        console.log("Default submission prevented.");
-
-        const url = document.getElementById("urlInput").value.trim();
-
-        if (!url) {
-            alert("Please enter a valid URL.");
-            return;
-        }
-
-        console.log("URL to inspect:", url);
-        
     // Show loading message and play background music
     document.getElementById("loading").style.display = 'block';
     outputContainer.style.display = 'none';

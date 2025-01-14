@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Pulse AI** is a powerful web scraper and SEO inspector built using **FastAPI**, **BeautifulSoup**, **Requests**, and **Transformers**. This application allows users to submit a URL and perform an in-depth analysis of the provided webpage, including SEO analysis, content summarization, broken link detection, and much more.
+**Cat AI** is a powerful web scraper and SEO inspector built using **FastAPI**, **BeautifulSoup**, **Requests**, and **Transformers**. This application allows users to submit a URL and perform an in-depth analysis of the provided webpage, including SEO analysis, content summarization, broken link detection, and much more.
 
 ### Features:
 - **SEO Analysis**: Extracts and analyzes the title, meta description, headings, and keywords of a webpage.
@@ -17,6 +17,6 @@
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/copycode69/pluse-AI.git
-   cd pulse-ai
+   git clone https://github.com/copycode69/Cat-AI.git
+   cd cat-ai
 

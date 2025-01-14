@@ -6,7 +6,7 @@
         "use": "@vercel/static"
       },
       {
-        "src": "public/**/*",
+        "src": "public/**",
         "use": "@vercel/static"
       }
     ],
@@ -17,4 +17,3 @@
       }
     ]
   }
-  

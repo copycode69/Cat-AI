@@ -4,20 +4,22 @@ const titleDiv = document.getElementById("title");
 const metaDescriptionDiv = document.getElementById("metaDescription");
 const languageDiv = document.getElementById("language");
 const metaKeywordsDiv = document.getElementById("metaKeywords");
-const imageResultsDiv = document.getElementById("imageResults"); // For displaying images
-const brokenLinksDiv = document.getElementById("brokenLinks"); // For displaying broken links
-const seoScoreDiv = document.getElementById("seoScore"); // For displaying SEO score
-const summaryDiv = document.getElementById("summary"); // For displaying AI summary
-const imageIssuesDiv = document.getElementById("imageIssues"); // For displaying image issues
-const outputContainer = document.getElementById("outputContainer"); // Output container
+const imageResultsDiv = document.getElementById("imageResults");
+const brokenLinksDiv = document.getElementById("brokenLinks");
+const seoScoreDiv = document.getElementById("seoScore");
+const summaryDiv = document.getElementById("summary");
+const imageIssuesDiv = document.getElementById("imageIssues");
+const outputContainer = document.getElementById("outputContainer");
+const loadingAudio = document.getElementById("loading-audio");  // The audio element
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const url = document.getElementById("urlInput").value;
 
-    // Show loading message
+    // Show loading message and play background music
     document.getElementById("loading").style.display = 'block';
-    outputContainer.style.display = 'none'; // Hide output container until data is ready
+    outputContainer.style.display = 'none';
+    loadingAudio.play();  // Play the song
 
     try {
         const response = await fetch("https://ybbmqmjwfg.execute-api.ap-south-1.amazonaws.com/inspect", {
@@ -56,8 +58,8 @@ form.addEventListener("submit", async (e) => {
                     const img = document.createElement("img");
                     img.src = imgUrl;
                     img.alt = "Extracted Image";
-                    img.width = 200;  // Set image width
-                    img.height = 200; // Set image height
+                    img.width = 200;
+                    img.height = 200;
                     imageResultsDiv.appendChild(img);
                 });
             } else {
@@ -74,14 +76,17 @@ form.addEventListener("submit", async (e) => {
             // Show the output container and hide loading message
             outputContainer.style.display = 'block';
             document.getElementById("loading").style.display = 'none';
+            loadingAudio.pause();  // Stop the music after loading is done
         } else {
             statusCodeDiv.textContent = "Error: Unable to inspect URL.";
             outputContainer.style.display = 'block';
             document.getElementById("loading").style.display = 'none';
+            loadingAudio.pause();  // Stop music if there's an error
         }
     } catch (error) {
         statusCodeDiv.textContent = "Error: Network or server issue.";
         outputContainer.style.display = 'block';
         document.getElementById("loading").style.display = 'none';
+        loadingAudio.pause();  // Stop music if there's an error
     }
 });

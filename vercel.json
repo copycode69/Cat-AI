@@ -1,14 +1,14 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "Frontend/**",
-        "use": "@vercel/static"
-      },
-      {
-        "src": "public/**",
-        "use": "@vercel/static"
-      }
+        {
+            "src": "Frontend/**/*.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "public/**/*",
+            "use": "@vercel/static"
+        }
     ],
     "routes": [
       {

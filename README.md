@@ -1,4 +1,4 @@
-# Pulse AI - Web Scraper and SEO Inspector
+# CAT AI - Web Scraper and SEO Inspector
 
 ## Overview
 

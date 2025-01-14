@@ -12,25 +12,18 @@ const imageIssuesDiv = document.getElementById("imageIssues");
 const outputContainer = document.getElementById("outputContainer");
 const loadingAudio = document.getElementById("loading-audio");  // The audio element
 
-form.addEventListener("submit", async (e) => {
-    // Prevent the default form submission behavior (page refresh)
-    e.preventDefault();
+document.getElementById("submitButton").addEventListener("click", async () => {
+    const url = document.getElementById("urlInput").value.trim();
 
-    // Get the URL input value
-    const url = document.getElementById("urlInput").value;
+    // Validate the input
+    if (!url) {
+        alert("Please enter a valid URL.");
+        return;
+    }
 
-    // Perform your logic here, such as logging the URL or making an API call
-    console.log("URL submitted:", url);
+    // Handle your logic here...
+    console.log("URL:", url);
 
-    // Example: You could make an API call here using fetch
-    // const response = await fetch('your-api-endpoint', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ url })
-    // });
-    // const result = await response.json();
-    // console.log(result);
-  
     // Show loading message and play background music
     document.getElementById("loading").style.display = 'block';
     outputContainer.style.display = 'none';

@@ -12,17 +12,17 @@ const imageIssuesDiv = document.getElementById("imageIssues");
 const outputContainer = document.getElementById("outputContainer");
 const loadingAudio = document.getElementById("loading-audio");  // The audio element
 
-document.getElementById("submitButton").addEventListener("click", async () => {
+document.getElementById("urlForm").addEventListener("submit", async (e) => {
+    e.preventDefault(); // Prevent page refresh
+    
     const url = document.getElementById("urlInput").value.trim();
-
-    // Validate the input
+    
     if (!url) {
         alert("Please enter a valid URL.");
         return;
     }
 
-    // Handle your logic here...
-    console.log("URL:", url);
+    console.log("URL to inspect:", url);
 
     // Show loading message and play background music
     document.getElementById("loading").style.display = 'block';
